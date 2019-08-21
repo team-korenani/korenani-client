@@ -3,6 +3,7 @@ import logo from "./logo.png";
 import Navbar from "./Navbar";
 import "./App.scss";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -13,14 +14,18 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
         </section>
         <section className="splash-page-section">
-          <Button className="splash-page-button" variant="secondary">
-            Sign up with Twitter
-          </Button>
+          <Link to={"./tutorial"}>
+            <Button className="splash-page-button" variant="secondary">
+              Sign up with Twitter
+            </Button>
+          </Link>
         </section>
         <section className="splash-page-section">
-          <Button className="splash-page-button" variant="secondary">
-            Sign up with Facebook
-          </Button>
+          <Link to={"./tutorial"}>
+            <Button className="splash-page-button" variant="secondary">
+              Sign up with Facebook
+            </Button>
+          </Link>
         </section>
       </div>
     </div>
