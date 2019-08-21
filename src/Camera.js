@@ -1,36 +1,52 @@
 import React from "react";
 import Webcam from "react-webcam";
+import Button from "react-bootstrap/Button";
 import "./Camera.css";
+import { setImageData } from "./state/actions/index";
+import { connect } from "react-redux";
 
-export default class Camera extends React.Component {
+class Camera extends React.Component {
   setRef = webcam => {
     this.webcam = webcam;
-    this.state = {
-      photoData: ""
-    };
   };
 
   capture = () => {
     const imageSrc = this.webcam.getScreenshot();
-    this.setState({
-      photoData: imageSrc
-    });
+    this.props.setImgData(imageSrc);
   };
 
   render() {
     return (
       <div className="video-container">
-        <p>Hellloooooooo</p>
         <Webcam
           className="video"
           audio={false}
           ref={this.setRef}
           screenshotFormat="image/jpeg"
         />
-        <button className="capture" onClick={this.capture}>
+        <Button className="capture" onClick={this.capture}>
           Snap!
-        </button>
+        </Button>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    imgData: state.imgData
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setImgData: data => {
+      dispatch(setImageData(data));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Camera);
