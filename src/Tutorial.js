@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import "./Tutorial.scss";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 function Tutorial() {
   return (
@@ -19,9 +20,11 @@ function Tutorial() {
         </div>
       </div>
       <div className="button-container">
-        <Button className="tutorial-page-button" variant="secondary">
-          Got it!
-        </Button>
+        <Link to={"./camera"}>
+          <Button className="tutorial-page-button" variant="secondary">
+            Got it!
+          </Button>
+        </Link>
       </div>
     </div>
   );

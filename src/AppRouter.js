@@ -2,7 +2,7 @@ import React from "react";
 import App from "./App";
 import Camera from "./Camera";
 import Tutorial from "./Tutorial";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function AppRouter() {
   return (
