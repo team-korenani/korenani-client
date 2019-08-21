@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import "./Camera.css";
 import { setImageData } from "./state/actions/index";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class Camera extends React.Component {
   setRef = webcam => {
@@ -13,6 +14,9 @@ class Camera extends React.Component {
   capture = () => {
     const imageSrc = this.webcam.getScreenshot();
     this.props.setImgData(imageSrc);
+    setTimeout(() => {
+      console.log("imgData:", this.props.imgData);
+    }, 10000);
   };
 
   render() {
@@ -24,9 +28,11 @@ class Camera extends React.Component {
           ref={this.setRef}
           screenshotFormat="image/jpeg"
         />
-        <Button className="capture" onClick={this.capture}>
-          Snap!
-        </Button>
+        <Link to={"./result"}>
+          <Button className="capture" onClick={this.capture}>
+            Snap!
+          </Button>
+        </Link>
       </div>
     );
   }
