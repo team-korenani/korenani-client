@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Tutorial() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="Tutorial-container">
         <div className="Tutorial-box">
           <h1>How to use:</h1>

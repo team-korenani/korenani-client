@@ -5,6 +5,12 @@
   font-family: "Montserrat", "Roboto";
   padding: 40px;
   justify-content: center;
+  color: #6c757b;
+  .Tutorial-box {
+    h1 {
+      margin-bottom: 30px;
+    }
+  }
 }
 
 .tutorial-page-button {
@@ -13,7 +19,7 @@
 
 .button-container {
   text-align: center;
-}
-
-.Tutorial-box {
+  .tutorial-page-button {
+    margin-bottom: 30px;
+  }
 }
