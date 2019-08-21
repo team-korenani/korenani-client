@@ -1,0 +1,30 @@
+import React from "react";
+import logo from "./logo.png";
+import Navbar from "./Navbar";
+import "./App.scss";
+import Button from "react-bootstrap/Button";
+
+function App() {
+  return (
+    <div className="App">
+      <Navbar />
+      <div className="App-container">
+        <section className="logo-container">
+          <img src={logo} className="App-logo" alt="logo" />
+        </section>
+        <section className="splash-page-section">
+          <Button className="splash-page-button" variant="secondary">
+            Sign up with Twitter
+          </Button>
+        </section>
+        <section className="splash-page-section">
+          <Button className="splash-page-button" variant="secondary">
+            Sign up with Facebook
+          </Button>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+export default App;
