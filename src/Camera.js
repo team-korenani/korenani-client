@@ -14,9 +14,6 @@ class Camera extends React.Component {
   capture = () => {
     const imageSrc = this.webcam.getScreenshot();
     this.props.setImgData(imageSrc);
-    setTimeout(() => {
-      console.log("imgData:", this.props.imgData);
-    }, 10000);
   };
 
   render() {

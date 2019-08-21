@@ -5,7 +5,7 @@ const defaultState = {
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case "SET_IMG_DATA":
-      console.log("helo");
+      // console.log("helo");
       const newState = Object.assign({}, state);
       newState.imgData = action.data;
       return newState;
