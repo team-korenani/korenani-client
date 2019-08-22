@@ -16,14 +16,7 @@ function App() {
         <section className="splash-page-section">
           <Link to={"./tutorial"}>
             <Button className="splash-page-button" variant="secondary">
-              Sign up with Twitter
-            </Button>
-          </Link>
-        </section>
-        <section className="splash-page-section">
-          <Link to={"./tutorial"}>
-            <Button className="splash-page-button" variant="secondary">
-              Sign up with Facebook
+              Snap and Learn
             </Button>
           </Link>
         </section>
