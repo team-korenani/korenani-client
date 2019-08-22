@@ -11,6 +11,12 @@ class Camera extends React.Component {
     this.webcam = webcam;
   };
 
+  videoConstraints = () => {
+    return {
+      facingMode: "environment"
+    }
+  }
+
   capture = () => {
     const imageSrc = this.webcam.getScreenshot();
     this.props.setImgData(imageSrc);
@@ -20,6 +26,7 @@ class Camera extends React.Component {
     return (
       <div className="video-container">
         <Webcam
+          videoConstraints={this.videoConstraints()}
           className="video"
           audio={false}
           ref={this.setRef}
