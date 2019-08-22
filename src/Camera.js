@@ -1,7 +1,7 @@
 import React from "react";
 import Webcam from "react-webcam";
 import Button from "react-bootstrap/Button";
-import "./Camera.css";
+import "./Camera.scss";
 import { setImageData } from "./state/actions/index";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
