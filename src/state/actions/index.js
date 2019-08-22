@@ -4,3 +4,10 @@ export function setImageData(imgData) {
     data: imgData
   };
 }
+
+export function setKeywords(keywords) {
+  return {
+    type: "SET_KEYWORDS",
+    data: keywords
+  };
+}

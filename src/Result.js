@@ -2,14 +2,49 @@ import React from "react";
 import { connect } from "react-redux";
 import "./styles/Result.scss";
 import axios from "axios";
+import { base64ToBlob } from 'base64-blob'
+import { setKeywords } from "./state/actions/index";
 
 class Result extends React.Component {
+
   componentDidMount = async () => {
-    const result = await axios({
-      url: "http://korenani-server.herokuapp.com/api/photos",
+
+    const blob = await base64ToBlob(this.props.imgData);
+    const visualFeatureData = await axios({
       method: "post",
-      data: { image: this.props.imgData }
+      url:
+        "https://microsoft-azure-microsoft-computer-vision-v1.p.rapidapi.com/analyze?visualfeatures=Tags",
+      headers: {
+        "X-RapidAPI-Host":
+          "microsoft-azure-microsoft-computer-vision-v1.p.rapidapi.com",
+        "X-RapidAPI-Key": "9c08531baamsh9b76aff3da43eacp161185jsn135ce75ad624",
+        "Content-Type": "application/octet-stream"
+      },
+      data: blob
     });
+
+    const worthyKeywords = visualFeatureData.data.tags.filter(item => {
+      if (item.confidence > 0.85) {
+        return item.name;
+      }
+    }).map(item => {
+      return item.name
+    });
+
+    console.log(worthyKeywords);
+
+    axios({
+      url: "http://localhost:4000/api/photos",
+      method: "post",
+      data: { keywords: worthyKeywords }
+    }).then(res => {
+      console.log(res.data);
+      this.props.setKeywords(res.data);
+    }).catch(err => {
+      console.log("There was an error sending the keywords to the server", err);
+    });
+
+
   };
 
   render() {
@@ -32,4 +67,12 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Result);
+const mapDispatchToProps = dispatch => {
+  return {
+    setKeywords: data => {
+      dispatch(setKeywords(data));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Result);
