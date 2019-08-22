@@ -5,9 +5,9 @@ export function setImageData(imgData) {
   };
 }
 
-export function setKeywords(keywords) {
+export function setResultData(keywordsData) {
   return {
-    type: "SET_KEYWORDS",
-    data: keywords
+    type: "SET_RESULT_DATA",
+    data: keywordsData
   };
 }

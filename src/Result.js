@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./styles/Result.scss";
 import axios from "axios";
 import { base64ToBlob } from 'base64-blob'
-import { setKeywords } from "./state/actions/index";
+import { setResultData } from "./state/actions/index";
 
 class Result extends React.Component {
 
@@ -31,15 +31,13 @@ class Result extends React.Component {
       return item.name
     });
 
-    console.log(worthyKeywords);
-
     axios({
       url: "http://localhost:4000/api/photos",
       method: "post",
       data: { keywords: worthyKeywords }
     }).then(res => {
+      this.props.setResultData(res.data);
       console.log(res.data);
-      this.props.setKeywords(res.data);
     }).catch(err => {
       console.log("There was an error sending the keywords to the server", err);
     });
@@ -69,8 +67,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setKeywords: data => {
-      dispatch(setKeywords(data));
+    setResultData: data => {
+      dispatch(setResultData(data));
     }
   };
 };

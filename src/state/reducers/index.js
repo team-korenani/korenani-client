@@ -1,6 +1,6 @@
 const defaultState = {
   imgData: "",
-  keywords: []
+  results: []
 };
 
 const reducer = (state = defaultState, action) => {
@@ -9,8 +9,8 @@ const reducer = (state = defaultState, action) => {
     case "SET_IMG_DATA":
       newState.imgData = action.data;
       return newState;
-    case "SET_KEYWORDS":
-      newState.keywords = action.data;
+    case "SET_RESULT_DATA":
+      newState.results = action.data;
       return newState;
     default:
       return state;
