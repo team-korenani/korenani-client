@@ -28,7 +28,7 @@ class Result extends React.Component {
       });
 
     axios({
-      url: "http://korenani-server.herokuapp.com/api/photos",
+      url: "https://korenani-server.herokuapp.com/api/photos",
       method: "post",
       data: { keywords: worthyKeywords }
     })
