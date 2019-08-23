@@ -1,6 +1,6 @@
 .Result {
   width: 100%;
-  height: 100%;
+  // height: 100%;
 }
 
 .Result-photo-container {
@@ -12,5 +12,15 @@
   .photo {
     height: 100%;
     width: auto;
+  }
+}
+.Result-cards-container {
+  .Result-cards {
+    .Result-cards-container-ja {
+      font-size: 30px;
+    }
+    .Result-cards-container-en {
+      font-size: 40px;
+    }
   }
 }
