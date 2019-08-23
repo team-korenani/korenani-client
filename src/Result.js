@@ -51,9 +51,9 @@ class Result extends React.Component {
           <img className="photo" src={this.props.imgData} alt="result" />
         </div>
         <div className="Result-cards-container">
-          {this.props.keywords.map(word => {
+          {this.props.results.map((word, key) => {
             return (
-              <div className="Result-cards">
+              <div key={key} className="Result-cards">
                 <span className="Result-cards-container-en">{word.en}</span>
                 <span className="Result-cards-container-ja"> ({word.ja})</span>
                 <p>Example Sentences</p>
@@ -76,7 +76,7 @@ class Result extends React.Component {
 const mapStateToProps = state => {
   return {
     imgData: state.imgData,
-    keywords: state.keywords
+    results: state.results
   };
 };
 
