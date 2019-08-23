@@ -4,3 +4,10 @@ export function setImageData(imgData) {
     data: imgData
   };
 }
+
+export function setResultData(keywordsData) {
+  return {
+    type: "SET_RESULT_DATA",
+    data: keywordsData
+  };
+}
