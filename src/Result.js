@@ -8,7 +8,7 @@ class Result extends React.Component {
     const result = await axios({
       url: "http://korenani-server.herokuapp.com/api/photos",
       method: "post",
-      data: { image: this.props.imgData }
+      data: { image: this.props.imgData, keywords: this.props.keywords }
     });
   };
 
@@ -19,7 +19,22 @@ class Result extends React.Component {
           <img className="photo" src={this.props.imgData} alt="result" />
         </div>
         <div className="Result-cards-container">
-          <p>RESULTS</p>
+          {this.props.keywords.map(word => {
+            return (
+              <div className="Result-cards">
+                <span className="Result-cards-container-en">{word.en}</span>
+                <span className="Result-cards-container-ja"> ({word.ja})</span>
+                <p>Example Sentences</p>
+                {word.ex.map(ex => {
+                  return (
+                    <ul>
+                      <li>{ex}</li>
+                    </ul>
+                  );
+                })}
+              </div>
+            );
+          })}
         </div>
       </div>
     );
@@ -28,7 +43,8 @@ class Result extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    imgData: state.imgData
+    imgData: state.imgData,
+    keywords: state.keywords
   };
 };
 
