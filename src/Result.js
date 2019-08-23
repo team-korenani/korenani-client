@@ -23,16 +23,14 @@ class Result extends React.Component {
       data: blob
     });
 
-    const worthyKeywords = visualFeatureData.data.tags.filter(item => {
-      if (item.confidence > 0.85) {
-        return item.name;
-      }
-    }).map(item => {
-      return item.name
-    });
+    const worthyKeywords = visualFeatureData.data.tags
+      .filter(item => item.confidence > 0.85)
+      .map(item => {
+        return item.name
+      });
 
     axios({
-      url: "http://localhost:4000/api/photos",
+      url: "http://korenani-server.herokuapp.com/api/photos",
       method: "post",
       data: { keywords: worthyKeywords }
     }).then(res => {

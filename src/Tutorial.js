@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "./Navbar";
 import "./Tutorial.scss";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
