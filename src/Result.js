@@ -57,9 +57,9 @@ class Result extends React.Component {
                 <span className="Result-cards-container-en">{word.en}</span>
                 <span className="Result-cards-container-ja"> ({word.ja})</span>
                 <p>Example Sentences</p>
-                {word.ex.map(ex => {
+                {word.ex.map((ex, key) => {
                   return (
-                    <ul>
+                    <ul key={key}>
                       <li>{ex}</li>
                     </ul>
                   );
